@@ -3,15 +3,15 @@ package controlador;
 import utils.AccesoADatos;
 import vista.Marco;
 import vista.PanelMenu;
-import modelo.Archivo;
 
-import java.util.List;
+import java.awt.*;
+import java.io.File;
 
 public class ControladorAplicacion {
 
     private Marco vista;
     private ControladorMenu menu;
-    private List<Archivo> listaDeArchivos;
+    private java.util.List<File> listaDeArchivos;
 
     public ControladorAplicacion() {
         cargarArchivos();
@@ -21,7 +21,7 @@ public class ControladorAplicacion {
         listaDeArchivos = AccesoADatos.obtenerArchivos();
     }
 
-    public void agregarArchivo(Archivo archivo) {
+    public void agregarArchivo(File archivo) {
         listaDeArchivos.add(archivo);
     }
 
@@ -48,7 +48,15 @@ public class ControladorAplicacion {
         vista.agregarMenu(menu);
     }
 
-    public List<Archivo> getArchivos() {
+    public java.util.List<File> getArchivos() {
         return listaDeArchivos;
+    }
+
+    public Component getMarco() {
+        return vista;
+    }
+
+    public void borrarArchivo(File archivo) {
+        listaDeArchivos.remove(archivo);
     }
 }

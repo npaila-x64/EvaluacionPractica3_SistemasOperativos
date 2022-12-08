@@ -4,24 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="agrega vista de consola">
-      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/ComandoMalformadoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lanzador/AppCliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lanzador/AppServidor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/ClientesConector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/Comando.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/ComandoEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/ServidorConector.java" afterDir="false" />
+    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="implementa funcionalidad básica de cliente-servidor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Cliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Servidor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorAplicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lanzador/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/AccesoADatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AccesoADatos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vista/ArchivosTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/ArchivosTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/excepciones/ComandoMalformadoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/excepcion/ComandoMalformadoException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ClientesConector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/ClientesConector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Comando.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Comando.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/AccesoADatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AccesoADatos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/vista/ConsolaLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/ConsolaLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vista/PanelMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/PanelMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev_nicolas" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,15 +43,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/nicol/IdeaProjects/EvaluacionPractica3_SistemasOperativos/src/archivos",
-    "settings.editor.selected.configurable": "preferences.general"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicol/IdeaProjects/EvaluacionPractica3_SistemasOperativos/src/archivos&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nicol\IdeaProjects\EvaluacionPractica3_SistemasOperativos\src\archivos" />
@@ -121,6 +111,8 @@
         <item itemvalue="Application.AppCliente" />
         <item itemvalue="Application.AppServidor" />
         <item itemvalue="Application.ConsolaLogger" />
+        <item itemvalue="Application.AppCliente" />
+        <item itemvalue="Application.AppServidor" />
       </list>
     </recent_temporary>
   </component>

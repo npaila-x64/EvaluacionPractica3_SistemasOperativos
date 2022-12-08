@@ -1,6 +1,6 @@
 package controlador;
 
-import excepciones.ComandoMalformadoException;
+import excepcion.ComandoMalformadoException;
 import modelo.ClientesConector;
 import modelo.Comando;
 import util.AccesoADatos;
@@ -54,12 +54,14 @@ public class ControladorServidor {
 
     public boolean eliminarArchivoFueSolicitado(Map<String, String> atributos) {
         String nombre = atributos.get("nombre");
-        File archivoABorrar = obtenerArchivoPorNombre(nombre);
-        if (AccesoADatos.borrarArchivo(archivoABorrar)) {
+        try {
+            File archivoABorrar = obtenerArchivoPorNombre(nombre);
+            AccesoADatos.borrarArchivo(archivoABorrar);
             borrarArchivo(archivoABorrar);
             consola.mostrarArchivoSeElimino(archivoABorrar.getName());
             return true;
-        } else {
+        } catch (IOException | IllegalStateException e) {
+            consola.mostrarError(e.getMessage());
             return false;
         }
     }
@@ -68,7 +70,6 @@ public class ControladorServidor {
         String nombre = atributos.get("nombre");
         String nombreIngresado = atributos.get("nombre_ingresado");
         File archivoADuplicar = obtenerArchivoPorNombre(nombre);
-        if (existeNombreDeArchivoEnCarpeta(nombreIngresado)) return false;
         try {
             duplicarArchivo(archivoADuplicar, nombreIngresado);
             consola.mostrarArchivoSeCreo(nombreIngresado);
@@ -85,27 +86,20 @@ public class ControladorServidor {
                 return archivo;
             }
         }
-        throw new IllegalStateException();
+        throw new IllegalStateException("El archivo no existe.");
     }
 
     private void duplicarArchivo(File archivoADuplicar, String nombreIngresado) throws IOException, IllegalStateException {
         File duplicado = new File(AccesoADatos.getCarpeta() + "/" + nombreIngresado);
+        if (AccesoADatos.existeNombreDeArchivoEnCarpeta(nombreIngresado)) {
+            throw new IllegalStateException("El archivo ya existe en la carpeta.");
+        }
         if (AccesoADatos.copiarArchivo(archivoADuplicar, duplicado)) {
             agregarArchivo(duplicado);
             consola.mostrarArchivoSeCreo(duplicado.getName());
         } else {
             throw new IllegalStateException("El archivo no se pudo crear.");
         }
-    }
-
-    private boolean existeNombreDeArchivoEnCarpeta(String nombreIngresado) {
-        var archivos = AccesoADatos.obtenerArchivos();
-        for (var archivo : archivos) {
-            if (nombreIngresado.equals(archivo.getName())) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public void clienteSeConecto() {

@@ -1,6 +1,6 @@
 package modelo;
 
-import excepciones.ComandoMalformadoException;
+import excepcion.ComandoMalformadoException;
 
 import java.util.Arrays;
 import java.util.HashMap;

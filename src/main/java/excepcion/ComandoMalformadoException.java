@@ -1,4 +1,4 @@
-package excepciones;
+package excepcion;
 
 public class ComandoMalformadoException extends RuntimeException {
 

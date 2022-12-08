@@ -23,8 +23,10 @@ public class AccesoADatos {
         return nuevaListaDeArchivos;
     }
 
-    public static boolean borrarArchivo(File archivoABorrar) {
-        return archivoABorrar.delete();
+    public static void borrarArchivo(File archivoABorrar) throws IOException {
+        if (!archivoABorrar.delete()) {
+            throw new IOException("El archivo no se pudo borrar.");
+        }
     }
 
     public static boolean copiarArchivo(File archivoADuplicar, File duplicado) throws IOException {

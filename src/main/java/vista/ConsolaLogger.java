@@ -30,7 +30,7 @@ public class ConsolaLogger {
     }
 
     public void mostrarClienteSeConecto() {
-        mostrar("Se estableció la conexión con un cliente.");
+        mostrar("Se estableció una conexión con un cliente.");
     }
 
     private String getTimeStamp() {

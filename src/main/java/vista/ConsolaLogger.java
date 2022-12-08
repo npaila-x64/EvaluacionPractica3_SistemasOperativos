@@ -7,7 +7,30 @@ public class ConsolaLogger {
 
     public ConsolaLogger() {
         System.out.println(getTimeStamp()
-                .concat("Inicializando consola..."));
+                .concat("Inicializando la consola del servidor. Esperando conexiones."));
+    }
+
+    public void mostrarArchivoSeElimino(String name) {
+        mostrar("Se eliminó el archivo "
+                .concat("'")
+                .concat(name)
+                .concat("'"));
+    }
+
+    public void mostrarArchivoSeCreo(String name) {
+        mostrar("Se creo el archivo "
+                .concat("'")
+                .concat(name)
+                .concat("'"));
+    }
+
+    public void mostrarError(String mensaje) {
+        mostrar("Hubo un error en la creación del archivo: "
+                .concat(mensaje));
+    }
+
+    public void mostrarClienteSeConecto() {
+        mostrar("Se estableció la conexión con un cliente.");
     }
 
     private String getTimeStamp() {
@@ -15,21 +38,9 @@ public class ConsolaLogger {
         return String.format("[%s] ", LocalDateTime.now().format(formatter));
     }
 
-    public void mostrarArchivoSeElimino(String name) {
+    private void mostrar(String mensaje) {
         System.out.println(
                 getTimeStamp()
-                    .concat("Se eliminó el archivo ")
-                    .concat("'")
-                    .concat(name)
-                    .concat("'"));
-    }
-
-    public void mostrarArchivoSeCreo(String name) {
-        System.out.println(
-                getTimeStamp()
-                        .concat("Se creo el archivo ")
-                        .concat("'")
-                        .concat(name)
-                        .concat("'"));
+                        .concat(mensaje));
     }
 }

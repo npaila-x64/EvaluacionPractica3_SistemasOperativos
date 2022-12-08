@@ -1,6 +1,6 @@
 package vista;
 
-import controlador.ControladorMenu;
+import controlador.ControladorCliente;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -14,9 +14,9 @@ public class PanelMenu extends JPanel implements ActionListener {
     private JButton salir;
     private JButton conectar;
     private JTable tArchivos;
-    private ControladorMenu controlador;
+    private ControladorCliente controlador;
 
-    public PanelMenu(ControladorMenu controlador) {
+    public PanelMenu(ControladorCliente controlador) {
         this.controlador = controlador;
         crearComponentes();
         setVisible(true);

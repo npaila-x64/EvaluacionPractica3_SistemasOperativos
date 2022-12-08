@@ -4,11 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="agrega operaciones eliminar y duplicar">
-      <change afterPath="$PROJECT_DIR$/src/main/java/vista/ConsolaLogger.java" afterDir="false" />
+    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="agrega vista de consola">
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/ComandoMalformadoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lanzador/AppCliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lanzador/AppServidor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/ClientesConector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/Comando.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/ComandoEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/ServidorConector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/AccesoADatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/AccesoADatos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Servidor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorAplicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lanzador/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/AccesoADatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AccesoADatos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vista/ArchivosTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/ArchivosTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vista/ConsolaLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/ConsolaLogger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/vista/PanelMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/PanelMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +32,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -45,7 +58,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/nicol/IdeaProjects/EvaluacionPractica3_SistemasOperativos/src/archivos"
+    "last_opened_file_path": "C:/Users/nicol/IdeaProjects/EvaluacionPractica3_SistemasOperativos/src/archivos",
+    "settings.editor.selected.configurable": "preferences.general"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -56,12 +70,28 @@
       <recent name="C:\Users\nicol\IdeaProjects\EvaluacionPractica3_SistemasOperativos\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="lanzador" />
+      <recent name="excepciones" />
+      <recent name="modelo" />
       <recent name="gui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lanzador.App" />
+  <component name="RunManager" selected="Application.AppCliente">
+    <configuration name="AppCliente" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lanzador.AppCliente" />
+      <module name="EvaluacionPractica3_SistemasOperativos" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lanzador.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppServidor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lanzador.AppServidor" />
       <module name="EvaluacionPractica3_SistemasOperativos" />
       <extension name="coverage">
         <pattern>
@@ -88,7 +118,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
+        <item itemvalue="Application.AppCliente" />
+        <item itemvalue="Application.AppServidor" />
         <item itemvalue="Application.ConsolaLogger" />
       </list>
     </recent_temporary>
@@ -123,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670457486218</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="agrega vista de consola">
+      <created>1670459772411</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670459772411</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -141,7 +179,8 @@
     <MESSAGE value="agrega clases Cliente y Servidor" />
     <MESSAGE value="implementa GUI" />
     <MESSAGE value="agrega operaciones eliminar y duplicar" />
-    <option name="LAST_COMMIT_MESSAGE" value="agrega operaciones eliminar y duplicar" />
+    <MESSAGE value="agrega vista de consola" />
+    <option name="LAST_COMMIT_MESSAGE" value="agrega vista de consola" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

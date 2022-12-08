@@ -1,6 +1,5 @@
 package controlador;
 
-import modelo.Comando;
 import modelo.ServidorConector;
 import vista.ArchivosTableModel;
 import vista.Marco;
@@ -73,7 +72,7 @@ public class ControladorCliente {
         }
     }
 
-    private void mostrarErrorAUsuario(String mensaje) {
+    public void mostrarErrorAUsuario(String mensaje) {
         JOptionPane.showMessageDialog(marco,
                 mensaje,
                 "Advertencia",
@@ -90,14 +89,11 @@ public class ControladorCliente {
     }
 
     public void conectarFueSolicitada() {
-        try {
-            refrescarArchivos();
-        } catch (IOException e) {
-            mostrarErrorAUsuario("Ocurrió un error al intentar conectarse al servidor.");
-        }
+        RefrescadorDeLista refrescador = new RefrescadorDeLista(this);
+        refrescador.start();
     }
 
-    private void refrescarArchivos() throws IOException {
+    public void refrescarArchivos() throws IOException {
         servidor.solicitarNombresDeArchivos();
         parsearListaDeArchivos(servidor.getRespuesta());
         modeloDeTabla.setArchivos(archivos);
@@ -106,5 +102,25 @@ public class ControladorCliente {
     private void parsearListaDeArchivos(String texto) {
         archivos = new ArrayList<>();
         archivos.addAll(Arrays.asList(texto.split(separadorArchivos)));
+    }
+}
+
+class RefrescadorDeLista extends Thread {
+
+    private ControladorCliente cliente;
+
+    public RefrescadorDeLista(ControladorCliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void run() {
+        try {
+            while (true) {
+                cliente.refrescarArchivos();
+                Thread.sleep(1000);
+            }
+        } catch (Exception e) {
+            cliente.mostrarErrorAUsuario("Ocurrió un error al intentar conectarse al servidor.");
+        }
     }
 }

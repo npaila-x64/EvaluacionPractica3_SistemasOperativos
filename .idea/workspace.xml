@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="implementa funcionalidad básica de cliente-servidor">
+    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="arregla error en el servidor caso de que se borre un archivo de forma manual">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/excepciones/ComandoMalformadoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/excepcion/ComandoMalformadoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ClientesConector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/ClientesConector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Comando.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Comando.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/AccesoADatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AccesoADatos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vista/ConsolaLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/ConsolaLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670459772411</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="arregla error en el servidor caso de que se borre un archivo de forma manual">
+      <created>1670528040662</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670528040662</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,7 +174,8 @@
     <MESSAGE value="implementa GUI" />
     <MESSAGE value="agrega operaciones eliminar y duplicar" />
     <MESSAGE value="agrega vista de consola" />
-    <option name="LAST_COMMIT_MESSAGE" value="agrega vista de consola" />
+    <MESSAGE value="arregla error en el servidor caso de que se borre un archivo de forma manual" />
+    <option name="LAST_COMMIT_MESSAGE" value="arregla error en el servidor caso de que se borre un archivo de forma manual" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

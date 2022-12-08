@@ -83,9 +83,9 @@ public class PanelMenu extends JPanel implements ActionListener {
     }
 
     private void crearTitulo() {
-        titulo = new JLabel("Título");
+        titulo = new JLabel("Cliente");
         titulo.setFont(new Font("Arial", Font.BOLD, 36));
-        titulo.setLocation(224, 24);
+        titulo.setLocation(210, 24);
         titulo.setSize(290, 41);
         this.add(titulo);
     }

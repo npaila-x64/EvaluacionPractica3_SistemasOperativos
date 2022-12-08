@@ -27,7 +27,7 @@ public class AccesoADatos {
         return archivoABorrar.delete();
     }
 
-    public static boolean duplicarArchivo(File archivoADuplicar, File duplicado) throws IOException {
+    public static boolean copiarArchivo(File archivoADuplicar, File duplicado) throws IOException {
         try (
             InputStream in = new BufferedInputStream(
                     new FileInputStream(archivoADuplicar));
@@ -44,7 +44,7 @@ public class AccesoADatos {
         return duplicado.exists();
     }
 
-    public static boolean estaNombreDeArchivoEnUso(String nombre) {
+    public static boolean existeNombreDeArchivoEnCarpeta(String nombre) {
         var archivos = obtenerArchivos();
         for (var archivo : archivos) {
             if (archivo.getName().equals(nombre)) {

@@ -2,6 +2,7 @@ package controlador;
 
 import utils.AccesoADatos;
 import vista.ArchivosTableModel;
+import vista.ConsolaLogger;
 import vista.PanelMenu;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ import java.io.IOException;
 public class ControladorMenu {
 
     private final PanelMenu vista;
+    private final ConsolaLogger consola;
     private final ArchivosTableModel modeloDeTabla;
     private final ControladorAplicacion controlador;
 
@@ -19,6 +21,7 @@ public class ControladorMenu {
         this.controlador = controlador;
         modeloDeTabla = new ArchivosTableModel();
         vista = new PanelMenu(this);
+        consola = new ConsolaLogger();
         this.controlador.agregarMenu(vista);
     }
 
@@ -37,50 +40,51 @@ public class ControladorMenu {
     public void eliminarArchivoFueSolicitado(int fila) {
         var archivoABorrar = controlador.getArchivos().get(fila);
         if (AccesoADatos.borrarArchivo(archivoABorrar)) {
-            controlador.borrarArchivo(archivoABorrar);
-            modeloDeTabla.setArchivos(controlador.getArchivos());
+            borrarArchivo(archivoABorrar);
+        } else {
+            mostrarErrorAUsuario("Ocurrió un error al borrar el archivo.");
         }
+    }
 
+    private void borrarArchivo(File archivoABorrar) {
+        controlador.borrarArchivo(archivoABorrar);
+        modeloDeTabla.setArchivos(controlador.getArchivos());
+        consola.mostrarArchivoSeElimino(archivoABorrar.getName());
     }
 
     public void duplicarArchivoFueSolicitado(int fila) {
         File archivoADuplicar = controlador.getArchivos().get(fila);
-        String nombreIngresado = pedirNombreDeArchivo();
-        if (!AccesoADatos.estaNombreDeArchivoEnUso(nombreIngresado)) {
+        String nombreIngresado = pedirNombreDeArchivoAUsuario();
+        if (!AccesoADatos.existeNombreDeArchivoEnCarpeta(nombreIngresado)) {
             try {
                 duplicarArchivo(archivoADuplicar, nombreIngresado);
-            } catch (IOException e) {
-                mostrarOcurrioUnError();
+            } catch (IOException | IllegalStateException e) {
+                mostrarErrorAUsuario("Ocurrió un error al crear el archivo.");
             }
         } else {
-            mostrarNombreDeArchivoEnUso();
+            mostrarErrorAUsuario("El nombre ingresado ya existe.");
         }
     }
 
-    private void duplicarArchivo(File archivoADuplicar, String nombreIngresado) throws IOException {
-        File nuevoArchivo = new File(AccesoADatos.getCarpeta() + "/" + nombreIngresado);
-        if (AccesoADatos.duplicarArchivo(archivoADuplicar, nuevoArchivo)) {
-
+    private void duplicarArchivo(File archivoADuplicar, String nombreIngresado) throws IOException, IllegalStateException {
+        File duplicado = new File(AccesoADatos.getCarpeta() + "/" + nombreIngresado);
+        if (AccesoADatos.copiarArchivo(archivoADuplicar, duplicado)) {
+            controlador.agregarArchivo(duplicado);
+            modeloDeTabla.setArchivos(controlador.getArchivos());
+            consola.mostrarArchivoSeCreo(duplicado.getName());
+        } else {
+            throw new IllegalStateException("El archivo no se pudo crear.");
         }
-        controlador.agregarArchivo(nuevoArchivo);
-        modeloDeTabla.setArchivos(controlador.getArchivos());
     }
 
-    private void mostrarOcurrioUnError() {
+    private void mostrarErrorAUsuario(String mensaje) {
         JOptionPane.showMessageDialog(controlador.getMarco(),
-                "Ocurrió un error al crear el archivo.",
+                mensaje,
                 "Advertencia",
                 JOptionPane.WARNING_MESSAGE);
     }
 
-    private void mostrarNombreDeArchivoEnUso() {
-        JOptionPane.showMessageDialog(controlador.getMarco(),
-                "El nombre ingresado ya existe.",
-                "Advertencia",
-                JOptionPane.WARNING_MESSAGE);
-    }
-
-    private String pedirNombreDeArchivo() {
+    private String pedirNombreDeArchivoAUsuario() {
         UIManager.put("OptionPane.okButtonText", "OK");
         UIManager.put("OptionPane.cancelButtonText", "Cancelar");
         return JOptionPane.showInputDialog(

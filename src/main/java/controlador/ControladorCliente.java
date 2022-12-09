@@ -65,11 +65,20 @@ public class ControladorCliente {
         String nombre = archivos.get(fila);
         String nombreIngresado = pedirNombreDeArchivoAUsuario();
         try {
-            servidor.solicitarDuplicarArchivo(nombre, nombreIngresado);
+            String nombreDeDuplicado = nombreIngresado  + "." + obtenerExtensionDeArchivo(nombre);
+            servidor.solicitarDuplicarArchivo(nombre, nombreDeDuplicado);
             refrescarArchivos();
         } catch (IOException e) {
             mostrarErrorAUsuario("Ocurrió un error al intentar crear el archivo.");
         }
+    }
+
+    private String obtenerExtensionDeArchivo(String nombre) {
+        String[] nombreArray = nombre.split("\\.");
+        if (nombreArray.length > 1) {
+            return nombreArray[nombreArray.length - 1];
+        }
+        return "";
     }
 
     public void mostrarErrorAUsuario(String mensaje) {

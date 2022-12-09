@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PanelMenu extends JPanel implements ActionListener {
+public class PanelCliente extends JPanel implements ActionListener {
 
     private JLabel titulo;
     private JButton salir;
@@ -17,7 +17,7 @@ public class PanelMenu extends JPanel implements ActionListener {
     private JTable tArchivos;
     private ControladorCliente controlador;
 
-    public PanelMenu(ControladorCliente controlador) {
+    public PanelCliente(ControladorCliente controlador) {
         this.controlador = controlador;
         crearComponentes();
         setVisible(true);

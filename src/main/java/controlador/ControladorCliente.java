@@ -1,9 +1,9 @@
 package controlador;
 
-import modelo.ServidorConector;
+import modelo.ServidorHandler;
 import vista.ArchivosTableModel;
 import vista.Marco;
-import vista.PanelMenu;
+import vista.PanelCliente;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -14,34 +14,34 @@ import java.util.List;
 
 public class ControladorCliente {
 
-    private final PanelMenu menu;
+    private final PanelCliente panel;
     private Marco marco;
     private List<String> archivos;
     private static final String separadorArchivos = ";";
     private final ArchivosTableModel modeloDeTabla;
-    private ServidorConector servidor;
+    private ServidorHandler servidor;
 
     public ControladorCliente() {
         marco = new Marco();
         archivos = new ArrayList<>();
         modeloDeTabla = new ArchivosTableModel();
-        menu = new PanelMenu(this);
-        agregarMenu(menu);
-        servidor = new ServidorConector();
+        panel = new PanelCliente(this);
+        agregarPanel(panel);
+        servidor = new ServidorHandler();
     }
 
     public void iniciar() {
         marco.setVisible(true);
-        menu.setHostname("localhost");
-        mostrarMenuPrincipal();
+        panel.setHostname("localhost");
+        mostrarPanelPrincipal();
     }
 
-    public void mostrarMenuPrincipal() {
-        marco.mostrarMenu();
+    public void mostrarPanelPrincipal() {
+        marco.mostrarPanel();
     }
 
-    public void agregarMenu(PanelMenu menu) {
-        marco.agregarMenu(menu);
+    public void agregarPanel(PanelCliente menu) {
+        marco.agregarPanel(menu);
     }
 
     public void salidaFueSolicitada() {
@@ -99,7 +99,7 @@ public class ControladorCliente {
     }
 
     public void conectarFueSolicitada() {
-        servidor.setHostname(menu.getHostname());
+        servidor.setHostname(panel.getHostname());
         RefrescadorDeLista refrescador = new RefrescadorDeLista(this);
         refrescador.start();
         habilitarConectar(false);
@@ -117,7 +117,7 @@ public class ControladorCliente {
     }
 
     public void habilitarConectar(boolean b) {
-        menu.habilitarConectar(b);
+        panel.habilitarConectar(b);
     }
 }
 

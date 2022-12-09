@@ -9,13 +9,13 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ClientesConector {
+public class ClientesHandler {
 
     private final int puerto = 7287;
     private boolean escuchando = true;
     private final ControladorServidor controlador;
 
-    public ClientesConector(ControladorServidor controlador) {
+    public ClientesHandler(ControladorServidor controlador) {
         this.controlador = controlador;
     }
 

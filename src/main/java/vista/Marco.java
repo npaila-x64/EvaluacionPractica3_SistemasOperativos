@@ -27,11 +27,11 @@ public class Marco extends JFrame {
         setResizable(false);
     }
 
-    public void mostrarMenu() {
+    public void mostrarPanel() {
         cl.show(panel, "menu");
     }
 
-    public void agregarMenu(PanelMenu menu) {
+    public void agregarPanel(PanelCliente menu) {
         panel.add("menu", menu);
     }
 }

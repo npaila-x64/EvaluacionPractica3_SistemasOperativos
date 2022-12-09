@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="cambia formato de ingreso de nombre de archivo">
+    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="agrega editor de host">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ServidorConector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/ServidorConector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vista/PanelMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/PanelMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ClientesConector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/ClientesHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ServidorConector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/ServidorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vista/ConsolaLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/Consola.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vista/Marco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/Marco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vista/PanelMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/PanelCliente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +67,7 @@
       <recent name="gui" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.AppCliente">
     <configuration name="AppCliente" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lanzador.AppCliente" />
       <module name="EvaluacionPractica3_SistemasOperativos" />
@@ -90,8 +94,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConsolaLogger" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="vista.ConsolaLogger" />
+    <configuration name="Consola" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vista.Consola" />
       <module name="EvaluacionPractica3_SistemasOperativos" />
       <extension name="coverage">
         <pattern>

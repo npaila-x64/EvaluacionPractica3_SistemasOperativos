@@ -3,9 +3,9 @@ package vista;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class ConsolaLogger {
+public class Consola {
 
-    public ConsolaLogger() {
+    public Consola() {
         System.out.println(getTimeStamp()
                 .concat("Inicializando la consola del servidor. Esperando conexiones."));
     }

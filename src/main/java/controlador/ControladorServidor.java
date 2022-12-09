@@ -1,10 +1,10 @@
 package controlador;
 
 import excepcion.ComandoMalformadoException;
-import modelo.ClientesConector;
+import modelo.ClientesHandler;
 import modelo.Comando;
 import util.AccesoADatos;
-import vista.ConsolaLogger;
+import vista.Consola;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class ControladorServidor {
 
-    private ConsolaLogger consola;
+    private Consola consola;
     private List<File> listaDeArchivos;
     private String respuesta;
     private static final String separadorArchivos = ";";
@@ -24,9 +24,9 @@ public class ControladorServidor {
     }
 
     public void iniciar() {
-        consola = new ConsolaLogger();
+        consola = new Consola();
         try {
-            new ClientesConector(this).esperarSolicitudes();
+            new ClientesHandler(this).esperarSolicitudes();
         } catch (IOException | ComandoMalformadoException e) {
             throw new RuntimeException(e);
         }

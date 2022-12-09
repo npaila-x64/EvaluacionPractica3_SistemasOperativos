@@ -32,6 +32,7 @@ public class ControladorCliente {
 
     public void iniciar() {
         marco.setVisible(true);
+        menu.setHostname("localhost");
         mostrarMenuPrincipal();
     }
 
@@ -98,8 +99,10 @@ public class ControladorCliente {
     }
 
     public void conectarFueSolicitada() {
+        servidor.setHostname(menu.getHostname());
         RefrescadorDeLista refrescador = new RefrescadorDeLista(this);
         refrescador.start();
+        habilitarConectar(false);
     }
 
     public void refrescarArchivos() throws IOException {
@@ -111,6 +114,10 @@ public class ControladorCliente {
     private void parsearListaDeArchivos(String texto) {
         archivos = new ArrayList<>();
         archivos.addAll(Arrays.asList(texto.split(separadorArchivos)));
+    }
+
+    public void habilitarConectar(boolean b) {
+        menu.habilitarConectar(b);
     }
 }
 
@@ -130,6 +137,7 @@ class RefrescadorDeLista extends Thread {
             }
         } catch (Exception e) {
             cliente.mostrarErrorAUsuario("Ocurrió un error al intentar conectarse al servidor.");
+            cliente.habilitarConectar(true);
         }
     }
 }

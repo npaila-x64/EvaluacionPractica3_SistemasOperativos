@@ -12,7 +12,8 @@ public class PanelMenu extends JPanel implements ActionListener {
 
     private JLabel titulo;
     private JButton salir;
-    private JButton conectar;
+    private JButton bconectar;
+    private JTextField thostname;
     private JTable tArchivos;
     private ControladorCliente controlador;
 
@@ -26,8 +27,21 @@ public class PanelMenu extends JPanel implements ActionListener {
         configurarPanel();
         crearTitulo();
         crearBotonConectar();
+        crearCampoDeTextoHostname();
         crearBotonSalir();
         crearTablaDeArchivos();
+    }
+
+    private void crearCampoDeTextoHostname  () {
+        thostname = new JTextField();
+        thostname.setFont(new Font("Arial", Font.PLAIN, 15));
+        thostname.setLocation(204, 394);
+        thostname.setSize(138, 29);
+        thostname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        thostname.setBorder(BorderFactory.createCompoundBorder(
+                thostname.getBorder(),
+                BorderFactory.createEmptyBorder(5, 10, 5, 5)));
+        this.add(thostname);
     }
 
     private void configurarPanel() {
@@ -91,17 +105,17 @@ public class PanelMenu extends JPanel implements ActionListener {
     }
 
     private void crearBotonConectar() {
-        conectar = new JButton("Conectar");
-        conectar.addActionListener(this);
-        conectar.setFont(new Font("Arial", Font.PLAIN, 15));
-        conectar.setLocation(215, 393);
-        conectar.setSize(116, 31);
-        conectar.setFocusable(false);
+        bconectar = new JButton("Conectar");
+        bconectar.addActionListener(this);
+        bconectar.setFont(new Font("Arial", Font.PLAIN, 15));
+        bconectar.setLocation(349, 393);
+        bconectar.setSize(116, 31);
+        bconectar.setFocusable(false);
 
-        conectar.setBackground(Color.BLACK);
-        conectar.setForeground(Color.WHITE);
+        bconectar.setBackground(Color.BLACK);
+        bconectar.setForeground(Color.WHITE);
 
-        this.add(conectar);
+        this.add(bconectar);
     }
 
     private void crearBotonSalir() {
@@ -118,13 +132,26 @@ public class PanelMenu extends JPanel implements ActionListener {
         this.add(salir);
     }
 
+    public String getHostname() {
+        return thostname.getText();
+    }
+
+    public void setHostname(String hostname) {
+        thostname.setText(hostname);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == salir) {
             this.controlador.salidaFueSolicitada();
         }
-        if (e.getSource() == conectar) {
+        if (e.getSource() == bconectar) {
             this.controlador.conectarFueSolicitada();
         }
+    }
+
+    public void habilitarConectar(boolean b) {
+        thostname.setEditable(b);
+        bconectar.setEnabled(b);
     }
 }

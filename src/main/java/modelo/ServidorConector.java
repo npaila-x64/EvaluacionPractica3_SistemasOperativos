@@ -7,7 +7,7 @@ import java.net.Socket;
 
 public class ServidorConector {
 
-    private final String hostname = "localhost";
+    private String hostname = "localhost";
     private final int puerto = 7287;
     private String respuesta;
 
@@ -51,5 +51,9 @@ public class ServidorConector {
 
     public String getRespuesta() {
         return respuesta;
+    }
+
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
     }
 }

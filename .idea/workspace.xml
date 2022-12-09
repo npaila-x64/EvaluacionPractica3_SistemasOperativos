@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="agrega actualización multihilo por parte del cliente">
+    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="cambia formato de ingreso de nombre de archivo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ServidorConector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/ServidorConector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vista/PanelMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/PanelMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="dev_nicolas" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,7 +63,7 @@
       <recent name="gui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AppCliente">
+  <component name="RunManager">
     <configuration name="AppCliente" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lanzador.AppCliente" />
       <module name="EvaluacionPractica3_SistemasOperativos" />
@@ -104,8 +106,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.AppCliente" />
-        <item itemvalue="Application.AppServidor" />
         <item itemvalue="Application.ConsolaLogger" />
+        <item itemvalue="Application.AppServidor" />
         <item itemvalue="Application.AppCliente" />
         <item itemvalue="Application.AppServidor" />
       </list>
@@ -155,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670528040662</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="cambia formato de ingreso de nombre de archivo">
+      <created>1670547805191</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670547805191</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,7 +184,8 @@
     <MESSAGE value="agrega operaciones eliminar y duplicar" />
     <MESSAGE value="agrega vista de consola" />
     <MESSAGE value="arregla error en el servidor caso de que se borre un archivo de forma manual" />
-    <option name="LAST_COMMIT_MESSAGE" value="arregla error en el servidor caso de que se borre un archivo de forma manual" />
+    <MESSAGE value="cambia formato de ingreso de nombre de archivo" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambia formato de ingreso de nombre de archivo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

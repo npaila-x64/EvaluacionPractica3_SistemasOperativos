@@ -9,6 +9,8 @@ import vista.Consola;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,20 +18,29 @@ import java.util.Map;
 public class ControladorServidor {
 
     private Consola consola;
+    private final int puerto = 7287;
+    private boolean escuchando = true;
     private List<File> listaDeArchivos;
     private Comando respuesta;
     private static final String separadorArchivos = ";";
 
     public ControladorServidor() {
+        consola = new Consola();
         cargarArchivos();
     }
 
     public void iniciar() {
-        consola = new Consola();
-        try {
-            new ClientesHandler(this).esperarSolicitudes();
+        try (ServerSocket ss = new ServerSocket(puerto)) {
+            while (escuchando) {
+                Socket cliente = ss.accept();
+                consola.mostrarClienteSeConecto(
+                        cliente.getInetAddress().getHostName(),
+                        cliente.getInetAddress().getHostAddress());
+                new Thread(new ClientesHandler(this, cliente)).start();
+            }
         } catch (IOException | ComandoMalformadoException e) {
-            throw new RuntimeException(e);
+            consola.mostrarError(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -102,10 +113,6 @@ public class ControladorServidor {
         } else {
             throw new IllegalStateException("El archivo no se pudo crear.");
         }
-    }
-
-    public void clienteSeConecto(String hostname, String hostaddress) {
-        consola.mostrarClienteSeConecto(hostname, hostaddress);
     }
 
     public void ejecutarComando(Comando comando) {

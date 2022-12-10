@@ -17,7 +17,7 @@ public class Comando {
         this.atributos = new HashMap<>();
     }
 
-    public static Comando parsearComando(String respuesta) throws ComandoMalformadoException {
+    public static Comando parsearSolicitud(String respuesta) throws ComandoMalformadoException {
         String[] comandoArray = respuesta.split(separador);
         esComandoValido(comandoArray);
 

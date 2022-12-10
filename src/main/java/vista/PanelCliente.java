@@ -132,7 +132,7 @@ public class PanelCliente extends JPanel implements ActionListener {
         this.add(salir);
     }
 
-    public String getHostname() {
+    public String getServidorHostname() {
         return thostname.getText();
     }
 
@@ -146,7 +146,7 @@ public class PanelCliente extends JPanel implements ActionListener {
             this.controlador.salidaFueSolicitada();
         }
         if (e.getSource() == bconectar) {
-            this.controlador.conectarFueSolicitada();
+            this.controlador.conectarConServidorFueSolicitado();
         }
     }
 

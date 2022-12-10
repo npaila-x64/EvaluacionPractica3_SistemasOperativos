@@ -4,47 +4,59 @@ import controlador.ControladorServidor;
 import excepcion.ComandoMalformadoException;
 import modelo.Comando;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.ServerSocket;
+import java.io.*;
 import java.net.Socket;
 
-public class ClientesHandler {
+public class ClientesHandler implements Runnable {
 
-    private final int puerto = 7287;
-    private boolean escuchando = true;
     private final ControladorServidor controlador;
+    private PrintWriter out;
+    private BufferedReader in;
+    private Socket cliente;
 
-    public ClientesHandler(ControladorServidor controlador) {
+    public ClientesHandler(ControladorServidor controlador, Socket cliente) {
         this.controlador = controlador;
+        this.cliente = cliente;
+        out = null;
+        in = null;
     }
 
-    public void esperarSolicitudes() throws IOException, ComandoMalformadoException {
-        try (ServerSocket ss = new ServerSocket(puerto)) {
-            try (Socket cliente = ss.accept()) {
-                controlador.clienteSeConecto(
-                        cliente.getInetAddress().getHostName(),
-                        cliente.getInetAddress().getHostAddress());
-                while (escuchando) {
-                    String mensajeRecibido = recibirMensaje(cliente);
-                    Comando comando = Comando.parsearComando(mensajeRecibido);
-                    controlador.seSolicitoComando(comando, cliente.getInetAddress().getHostName());
-                    controlador.ejecutarComando(comando);
-                    enviarRespuesta(cliente, controlador.getRespuesta());
-                }
+    @Override
+    public void run() {
+        try {
+            procesarSolicitud();
+        } catch (IOException | ComandoMalformadoException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                out.close();
+                in.close();
+                cliente.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
 
-    private void enviarRespuesta(Socket cliente, String mensajeAEnviar) throws IOException {
-        DataOutputStream dos = new DataOutputStream(cliente.getOutputStream());
-        dos.writeUTF(mensajeAEnviar);
-        dos.flush();
+    private void procesarSolicitud() throws IOException, ComandoMalformadoException {
+        while (true) {
+            String solicitudRecibida = recibirSolicitud(cliente);
+            if (solicitudRecibida == null) break;
+            Comando comando = Comando.parsearSolicitud(solicitudRecibida);
+            controlador.seSolicitoComando(comando, cliente.getInetAddress().getHostName());
+            controlador.ejecutarComando(comando);
+            enviarRespuesta(cliente, controlador.getRespuesta());
+        }
     }
 
-    private String recibirMensaje(Socket cliente) throws IOException {
-        DataInputStream dis = new DataInputStream(cliente.getInputStream());
-        return dis.readUTF();
+    private void enviarRespuesta(Socket cliente, String mensajeAEnviar) throws IOException {
+        out = new PrintWriter(cliente.getOutputStream(), true);
+        out.println(mensajeAEnviar);
+    }
+
+    private String recibirSolicitud(Socket cliente) throws IOException {
+        in = new BufferedReader(
+                new InputStreamReader(cliente.getInputStream()));
+        return in.readLine();
     }
 }

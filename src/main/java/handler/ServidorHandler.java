@@ -3,10 +3,7 @@ package handler;
 import modelo.Comando;
 import modelo.ComandoEnum;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.PipedReader;
+import java.io.*;
 import java.net.Socket;
 
 public class ServidorHandler {
@@ -16,30 +13,31 @@ public class ServidorHandler {
     private Comando respuesta;
     private Socket socket;
 
-    public ServidorHandler() {
-        try {
-            socket = new Socket(hostname, puerto);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void crearSocket(String hostname) throws IOException {
+        socket = new Socket(hostname, puerto);
     }
 
     private void realizarSolicitud(Comando comando) throws IOException {
         enviarComando(socket, comando);
-        respuesta = Comando.parsearComando(recibirMensaje(socket));
+        String mensajeRecibido = recibirMensaje(socket);
+        if (mensajeRecibido != null) {
+            respuesta = Comando.parsearSolicitud(mensajeRecibido);
+        }
     }
 
     private String recibirMensaje(Socket socket) throws IOException {
-        DataInputStream dis = new DataInputStream(socket.getInputStream());
-        return dis.readUTF();
+        BufferedReader in =
+                new BufferedReader(
+                        new InputStreamReader(socket.getInputStream()));
+        return in.readLine();
     }
 
     private void enviarComando(Socket socket, Comando comando) throws IOException{
-        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-        dos.writeUTF(comando.toString());
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+        out.println(comando.toString());
     }
 
-    public void solicitarNombresDeArchivos() throws IOException {
+    public void solicitarListaDeArchivos() throws IOException {
         Comando comando = new Comando();
         comando.setComandoEnum(ComandoEnum.VER_ARCHIVOS);
         realizarSolicitud(comando);
@@ -64,15 +62,7 @@ public class ServidorHandler {
         return respuesta;
     }
 
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
-    }
-
-    public void cerrarConexion() {
-        try {
-            socket.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void cerrarConexion() throws IOException {
+        socket.close();
     }
 }

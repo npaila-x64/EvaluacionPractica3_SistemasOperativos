@@ -49,6 +49,7 @@ public class ControladorCliente {
 
     public void salidaFueSolicitada() {
         marco.dispose();
+        servidor.cerrarConexion();
     }
 
     public TableModel getModeloDeTabla() {

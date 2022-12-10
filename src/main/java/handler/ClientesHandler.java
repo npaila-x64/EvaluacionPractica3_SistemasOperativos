@@ -22,11 +22,11 @@ public class ClientesHandler {
 
     public void esperarSolicitudes() throws IOException, ComandoMalformadoException {
         try (ServerSocket ss = new ServerSocket(puerto)) {
-            while (escuchando) {
-                try (Socket cliente = ss.accept()) {
-                    controlador.clienteSeConecto(
-                            cliente.getInetAddress().getHostName(),
-                            cliente.getInetAddress().getHostAddress());
+            try (Socket cliente = ss.accept()) {
+                controlador.clienteSeConecto(
+                        cliente.getInetAddress().getHostName(),
+                        cliente.getInetAddress().getHostAddress());
+                while (escuchando) {
                     String mensajeRecibido = recibirMensaje(cliente);
                     Comando comando = Comando.parsearComando(mensajeRecibido);
                     controlador.seSolicitoComando(comando, cliente.getInetAddress().getHostName());

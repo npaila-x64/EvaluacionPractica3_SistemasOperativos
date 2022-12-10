@@ -6,6 +6,7 @@ import modelo.ComandoEnum;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.PipedReader;
 import java.net.Socket;
 
 public class ServidorHandler {
@@ -13,12 +14,19 @@ public class ServidorHandler {
     private String hostname = "localhost";
     private final int puerto = 7287;
     private Comando respuesta;
+    private Socket socket;
+
+    public ServidorHandler() {
+        try {
+            socket = new Socket(hostname, puerto);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private void realizarSolicitud(Comando comando) throws IOException {
-        try (Socket socket = new Socket(hostname, puerto);) {
-            enviarComando(socket, comando);
-            respuesta = Comando.parsearComando(recibirMensaje(socket));
-        }
+        enviarComando(socket, comando);
+        respuesta = Comando.parsearComando(recibirMensaje(socket));
     }
 
     private String recibirMensaje(Socket socket) throws IOException {
@@ -58,5 +66,13 @@ public class ServidorHandler {
 
     public void setHostname(String hostname) {
         this.hostname = hostname;
+    }
+
+    public void cerrarConexion() {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

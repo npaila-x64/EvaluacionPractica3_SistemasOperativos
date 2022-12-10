@@ -24,9 +24,12 @@ public class ClientesHandler {
         try (ServerSocket ss = new ServerSocket(puerto)) {
             while (escuchando) {
                 try (Socket cliente = ss.accept()) {
-                    controlador.clienteSeConecto();
+                    controlador.clienteSeConecto(
+                            cliente.getInetAddress().getHostName(),
+                            cliente.getInetAddress().getHostAddress());
                     String mensajeRecibido = recibirMensaje(cliente);
                     Comando comando = Comando.parsearComando(mensajeRecibido);
+                    controlador.seSolicitoComando(comando, cliente.getInetAddress().getHostName());
                     controlador.ejecutarComando(comando);
                     enviarRespuesta(cliente, controlador.getRespuesta());
                 }

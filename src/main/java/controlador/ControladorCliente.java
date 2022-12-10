@@ -35,6 +35,7 @@ public class ControladorCliente {
         marco = new JFrame();
         marco.setContentPane(panel);
         marco.setTitle("Interfaz De Cliente");
+        marco.setIconImage(new ImageIcon("src/img/logo.png").getImage());
         marco.setBounds(0, 0, 565, 480);
         marco.setDefaultCloseOperation(EXIT_ON_CLOSE);
         marco.setLocationRelativeTo(null);

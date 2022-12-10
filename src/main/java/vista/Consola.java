@@ -10,6 +10,12 @@ public class Consola {
                 .concat("Inicializando la consola del servidor. Esperando conexiones."));
     }
 
+    public void mostrarSolicitud(String mensaje) {
+        mostrar("Se solicitó "
+                .concat("'")
+                .concat("'"));
+    }
+
     public void mostrarArchivoSeElimino(String name) {
         mostrar("Se eliminó el archivo "
                 .concat("'")
@@ -29,8 +35,11 @@ public class Consola {
                 .concat(mensaje));
     }
 
-    public void mostrarClienteSeConecto() {
-        mostrar("Se estableció una conexión con un cliente.");
+    public void mostrarClienteSeConecto(String hostname, String hostaddress) {
+        mostrar("Se estableció una conexión con un cliente. Con nombre de host "
+                .concat(hostname)
+                .concat(" y dirección ")
+                .concat(hostaddress));
     }
 
     private String getTimeStamp() {

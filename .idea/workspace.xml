@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="reemplaza algunos nombres actuales por unos más apropiados">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/archivos/archivo_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/archivos/archivo_1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ClientesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ClientesHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ComandoEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/ComandoEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ServidorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ServidorHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vista/Marco.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/ClientesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ClientesHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vista/Consola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/Consola.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev_nicolas" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,6 +55,7 @@
       <recent name="C:\Users\nicol\IdeaProjects\EvaluacionPractica3_SistemasOperativos\src\archivos" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nicol\IdeaProjects\EvaluacionPractica3_SistemasOperativos\src\img" />
       <recent name="C:\Users\nicol\IdeaProjects\EvaluacionPractica3_SistemasOperativos\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -67,7 +65,7 @@
       <recent name="gui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AppServidor">
+  <component name="RunManager" selected="Application.AppCliente">
     <configuration name="AppCliente" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lanzador.AppCliente" />
       <module name="EvaluacionPractica3_SistemasOperativos" />
@@ -109,8 +107,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AppServidor" />
         <item itemvalue="Application.AppCliente" />
+        <item itemvalue="Application.AppServidor" />
         <item itemvalue="Application.AppCliente" />
         <item itemvalue="Application.AppServidor" />
       </list>

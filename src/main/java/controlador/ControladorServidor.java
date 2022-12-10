@@ -105,8 +105,8 @@ public class ControladorServidor {
         }
     }
 
-    public void clienteSeConecto() {
-        consola.mostrarClienteSeConecto();
+    public void clienteSeConecto(String hostname, String hostaddress) {
+        consola.mostrarClienteSeConecto(hostname, hostaddress);
     }
 
     public void ejecutarComando(Comando comando) {
@@ -139,5 +139,9 @@ public class ControladorServidor {
 
     public String getRespuesta() {
         return respuesta.toString();
+    }
+
+    public void seSolicitoComando(Comando comando, String hostName) {
+
     }
 }

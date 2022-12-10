@@ -10,9 +10,9 @@ import java.net.Socket;
 public class ClientesHandler implements Runnable {
 
     private final ControladorServidor controlador;
+    private final Socket cliente;
     private PrintWriter out;
     private BufferedReader in;
-    private Socket cliente;
 
     public ClientesHandler(ControladorServidor controlador, Socket cliente) {
         this.controlador = controlador;

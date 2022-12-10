@@ -63,6 +63,8 @@ public class ServidorHandler {
     }
 
     public void cerrarConexion() throws IOException {
-        socket.close();
+        if (socket != null) {
+            socket.close();
+        }
     }
 }

@@ -51,6 +51,7 @@ public class ControladorCliente {
 
     public void iniciar() {
         marco.setVisible(true);
+        vista.setHostname("localhost");
     }
 
     public void salidaFueSolicitada() {
@@ -76,6 +77,7 @@ public class ControladorCliente {
     public void duplicarArchivoFueSolicitado(int fila) {
         String nombre = archivos.get(fila);
         String nombreIngresado = pedirNombreDeArchivoAUsuario();
+        if (nombreIngresado == null) return;
         try {
             String nombreDeDuplicado = nombreIngresado  + "." + obtenerExtensionDeArchivo(nombre);
             servidor.solicitarDuplicarArchivo(nombre, nombreDeDuplicado);
@@ -160,8 +162,12 @@ public class ControladorCliente {
             servidor.cerrarConexion();
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(1);
         }
+    }
+
+    public void limpiarListaDeArchivos() {
+        archivos = new ArrayList<>();
+        modeloDeTabla.setArchivos(archivos);
     }
 }
 
@@ -181,6 +187,7 @@ class RefrescadorDeLista extends Thread {
             }
         } catch (Exception e) {
             cliente.mostrarErrorAUsuario("Ocurrió un error al intentar conectarse al servidor.");
+            cliente.limpiarListaDeArchivos();
             cliente.habilitarComponentesInteractivosDeConexion(true);
         }
     }

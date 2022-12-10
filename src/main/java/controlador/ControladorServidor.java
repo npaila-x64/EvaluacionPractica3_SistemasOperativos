@@ -99,7 +99,6 @@ public class ControladorServidor {
         }
         if (AccesoADatos.copiarArchivo(archivoADuplicar, duplicado)) {
             agregarArchivo(duplicado);
-            consola.mostrarArchivoSeCreo(duplicado.getName());
         } else {
             throw new IllegalStateException("El archivo no se pudo crear.");
         }
@@ -142,6 +141,6 @@ public class ControladorServidor {
     }
 
     public void seSolicitoComando(Comando comando, String hostName) {
-
+        consola.mostrarSolicitud(comando.getComandoEnum().toString(), hostName);
     }
 }

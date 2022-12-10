@@ -10,10 +10,11 @@ public class Consola {
                 .concat("Inicializando la consola del servidor. Esperando conexiones."));
     }
 
-    public void mostrarSolicitud(String mensaje) {
-        mostrar("Se solicitó "
-                .concat("'")
-                .concat("'"));
+    public void mostrarSolicitud(String comando, String hostName) {
+        mostrar("El host '"
+                .concat(hostName)
+                .concat("' solicitó el comando ")
+                .concat(comando));
     }
 
     public void mostrarArchivoSeElimino(String name) {
@@ -36,9 +37,9 @@ public class Consola {
     }
 
     public void mostrarClienteSeConecto(String hostname, String hostaddress) {
-        mostrar("Se estableció una conexión con un cliente. Con nombre de host "
+        mostrar("Se estableció una conexión con un cliente. Cuyo nombre de host es '"
                 .concat(hostname)
-                .concat(" y dirección ")
+                .concat("' y dirección IP ")
                 .concat(hostaddress));
     }
 

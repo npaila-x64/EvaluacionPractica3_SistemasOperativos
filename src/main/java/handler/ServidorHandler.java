@@ -18,8 +18,6 @@ public class ServidorHandler {
         try (Socket socket = new Socket(hostname, puerto);) {
             enviarComando(socket, comando);
             respuesta = Comando.parsearComando(recibirMensaje(socket));
-            System.out.println(respuesta.getAtributos().toString());
-
         }
     }
 

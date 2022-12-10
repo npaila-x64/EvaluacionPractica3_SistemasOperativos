@@ -1,7 +1,8 @@
-package modelo;
+package handler;
 
 import controlador.ControladorServidor;
 import excepcion.ComandoMalformadoException;
+import modelo.Comando;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -26,11 +27,8 @@ public class ClientesHandler {
                     controlador.clienteSeConecto();
                     String mensajeRecibido = recibirMensaje(cliente);
                     Comando comando = Comando.parsearComando(mensajeRecibido);
-                    boolean seRealizoOperacion = controlador.ejecutarComando(comando);
-                    if (seRealizoOperacion) {
-                        String respuesta = controlador.getRespuesta();
-                        enviarRespuesta(cliente, respuesta);
-                    }
+                    controlador.ejecutarComando(comando);
+                    enviarRespuesta(cliente, controlador.getRespuesta());
                 }
             }
         }

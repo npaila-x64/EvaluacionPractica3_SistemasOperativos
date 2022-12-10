@@ -1,8 +1,9 @@
 package controlador;
 
 import excepcion.ComandoMalformadoException;
-import modelo.ClientesHandler;
+import handler.ClientesHandler;
 import modelo.Comando;
+import modelo.ComandoEnum;
 import util.AccesoADatos;
 import vista.Consola;
 
@@ -16,7 +17,7 @@ public class ControladorServidor {
 
     private Consola consola;
     private List<File> listaDeArchivos;
-    private String respuesta;
+    private Comando respuesta;
     private static final String separadorArchivos = ";";
 
     public ControladorServidor() {
@@ -62,6 +63,7 @@ public class ControladorServidor {
             return true;
         } catch (IOException | IllegalStateException e) {
             consola.mostrarError(e.getMessage());
+            respuesta.setAtributo("mensaje", e.getMessage());
             return false;
         }
     }
@@ -69,13 +71,14 @@ public class ControladorServidor {
     public boolean duplicarArchivoFueSolicitado(Map<String, String> atributos) {
         String nombre = atributos.get("nombre");
         String nombreIngresado = atributos.get("nombre_ingresado");
-        File archivoADuplicar = obtenerArchivoPorNombre(nombre);
         try {
+            File archivoADuplicar = obtenerArchivoPorNombre(nombre);
             duplicarArchivo(archivoADuplicar, nombreIngresado);
             consola.mostrarArchivoSeCreo(nombreIngresado);
             return true;
         } catch (IOException | IllegalStateException e) {
             consola.mostrarError(e.getMessage());
+            respuesta.setAtributo("mensaje", e.getMessage());
             return false;
         }
     }
@@ -106,33 +109,35 @@ public class ControladorServidor {
         consola.mostrarClienteSeConecto();
     }
 
-    public boolean ejecutarComando(Comando comando) {
+    public void ejecutarComando(Comando comando) {
+        respuesta = new Comando();
+        respuesta.setComandoEnum(ComandoEnum.RESPUESTA);
         switch (comando.getComandoEnum()) {
             case VER_ARCHIVOS:
-                respuesta = String.join(separadorArchivos, getNombreDeArchivos());
-                return true;
+                respuesta.setAtributo("respuesta", "OK");
+                respuesta.setAtributo("lista",
+                        String.join(separadorArchivos, getNombreDeArchivos()));
+                break;
             case DUPLICAR:
                 if (duplicarArchivoFueSolicitado(comando.getAtributos())) {
-                    respuesta = "OK";
-                    return true;
+                    respuesta.setAtributo("respuesta", "OK");
                 } else {
-                    respuesta = "Ocurrió un error al intentar duplicar el archivo";
-                    return false;
+                    respuesta.setAtributo("respuesta", "ERROR");
                 }
+                break;
             case ELIMINAR:
                 if (eliminarArchivoFueSolicitado(comando.getAtributos())) {
-                    respuesta = "OK";
-                    return true;
+                    respuesta.setAtributo("respuesta", "OK");
                 } else {
-                    respuesta = "Ocurrió un error al intentar eliminar el archivo";
-                    return false;
+                    respuesta.setAtributo("respuesta", "ERROR");
                 }
+                break;
             default:
                 throw new IllegalStateException();
         }
     }
 
     public String getRespuesta() {
-        return respuesta;
+        return respuesta.toString();
     }
 }

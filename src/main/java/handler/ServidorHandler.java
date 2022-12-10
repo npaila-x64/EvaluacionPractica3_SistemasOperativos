@@ -1,4 +1,7 @@
-package modelo;
+package handler;
+
+import modelo.Comando;
+import modelo.ComandoEnum;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -9,12 +12,14 @@ public class ServidorHandler {
 
     private String hostname = "localhost";
     private final int puerto = 7287;
-    private String respuesta;
+    private Comando respuesta;
 
     private void realizarSolicitud(Comando comando) throws IOException {
         try (Socket socket = new Socket(hostname, puerto);) {
             enviarComando(socket, comando);
-            respuesta = recibirMensaje(socket);
+            respuesta = Comando.parsearComando(recibirMensaje(socket));
+            System.out.println(respuesta.getAtributos().toString());
+
         }
     }
 
@@ -49,7 +54,7 @@ public class ServidorHandler {
         realizarSolicitud(comando);
     }
 
-    public String getRespuesta() {
+    public Comando getRespuesta() {
         return respuesta;
     }
 

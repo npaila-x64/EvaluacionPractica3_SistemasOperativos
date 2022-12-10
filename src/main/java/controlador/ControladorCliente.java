@@ -1,8 +1,8 @@
 package controlador;
 
-import modelo.ServidorHandler;
+import handler.ServidorHandler;
+import modelo.Comando;
 import vista.ArchivosTableModel;
-import vista.Marco;
 import vista.PanelCliente;
 
 import javax.swing.*;
@@ -12,36 +12,38 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+
 public class ControladorCliente {
 
-    private final PanelCliente panel;
-    private Marco marco;
+    private JFrame marco;
+    private PanelCliente panel;
     private List<String> archivos;
-    private static final String separadorArchivos = ";";
     private final ArchivosTableModel modeloDeTabla;
-    private ServidorHandler servidor;
+    private final ServidorHandler servidor;
+    private static final String separadorArchivos = ";";
 
     public ControladorCliente() {
-        marco = new Marco();
         archivos = new ArrayList<>();
         modeloDeTabla = new ArchivosTableModel();
-        panel = new PanelCliente(this);
-        agregarPanel(panel);
+        configurarVista();
         servidor = new ServidorHandler();
+    }
+
+    private void configurarVista() {
+        panel = new PanelCliente(this);
+        marco = new JFrame();
+        marco.setContentPane(panel);
+        marco.setTitle("Interfaz De Cliente");
+        marco.setBounds(0, 0, 565, 480);
+        marco.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        marco.setLocationRelativeTo(null);
+        marco.setResizable(false);
     }
 
     public void iniciar() {
         marco.setVisible(true);
         panel.setHostname("localhost");
-        mostrarPanelPrincipal();
-    }
-
-    public void mostrarPanelPrincipal() {
-        marco.mostrarPanel();
-    }
-
-    public void agregarPanel(PanelCliente menu) {
-        marco.agregarPanel(menu);
     }
 
     public void salidaFueSolicitada() {
@@ -56,9 +58,10 @@ public class ControladorCliente {
         String nombre = archivos.get(fila);
         try {
             servidor.solicitarEliminarArchivo(nombre);
+            analizarRespuesta();
             refrescarArchivos();
         } catch (IOException e) {
-            mostrarErrorAUsuario("Ocurrió un error al borrar el archivo.");
+            mostrarErrorAUsuario("Ocurrió un error al borrar el archivo. " + e.getMessage());
         }
     }
 
@@ -68,9 +71,18 @@ public class ControladorCliente {
         try {
             String nombreDeDuplicado = nombreIngresado  + "." + obtenerExtensionDeArchivo(nombre);
             servidor.solicitarDuplicarArchivo(nombre, nombreDeDuplicado);
+            analizarRespuesta();
             refrescarArchivos();
         } catch (IOException e) {
-            mostrarErrorAUsuario("Ocurrió un error al intentar crear el archivo.");
+            mostrarErrorAUsuario("Ocurrió un error al intentar crear el archivo. " + e.getMessage());
+        }
+    }
+
+    private void analizarRespuesta() throws IOException {
+        String respuesta = servidor.getRespuesta().getAtributos().get("respuesta");
+        if (!respuesta.equals("OK")) {
+            String mensaje = servidor.getRespuesta().getAtributos().get("mensaje");
+            throw new IOException(mensaje);
         }
     }
 
@@ -111,9 +123,10 @@ public class ControladorCliente {
         modeloDeTabla.setArchivos(archivos);
     }
 
-    private void parsearListaDeArchivos(String texto) {
+    private void parsearListaDeArchivos(Comando comando) {
         archivos = new ArrayList<>();
-        archivos.addAll(Arrays.asList(texto.split(separadorArchivos)));
+        String lista = comando.getAtributos().get("lista");
+        archivos.addAll(Arrays.asList(lista.split(separadorArchivos)));
     }
 
     public void habilitarConectar(boolean b) {
@@ -133,7 +146,7 @@ class RefrescadorDeLista extends Thread {
         try {
             while (true) {
                 cliente.refrescarArchivos();
-                Thread.sleep(1000);
+                Thread.sleep(5000);
             }
         } catch (Exception e) {
             cliente.mostrarErrorAUsuario("Ocurrió un error al intentar conectarse al servidor.");

@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="agrega editor de host">
+    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="reemplaza algunos nombres actuales por unos más apropiados">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/archivos/archivo_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/archivos/archivo_1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ClientesConector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/ClientesHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ServidorConector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/ServidorHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vista/ConsolaLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/Consola.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vista/Marco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/Marco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vista/PanelMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/PanelCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ClientesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ClientesHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ComandoEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/ComandoEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ServidorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ServidorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vista/Marco.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +67,7 @@
       <recent name="gui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AppCliente">
+  <component name="RunManager" selected="Application.AppServidor">
     <configuration name="AppCliente" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lanzador.AppCliente" />
       <module name="EvaluacionPractica3_SistemasOperativos" />
@@ -109,9 +109,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AppCliente" />
-        <item itemvalue="Application.ConsolaLogger" />
         <item itemvalue="Application.AppServidor" />
+        <item itemvalue="Application.AppCliente" />
         <item itemvalue="Application.AppCliente" />
         <item itemvalue="Application.AppServidor" />
       </list>
@@ -168,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670547805191</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="reemplaza algunos nombres actuales por unos más apropiados">
+      <created>1670557853105</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670557853105</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -189,7 +195,8 @@
     <MESSAGE value="agrega vista de consola" />
     <MESSAGE value="arregla error en el servidor caso de que se borre un archivo de forma manual" />
     <MESSAGE value="cambia formato de ingreso de nombre de archivo" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambia formato de ingreso de nombre de archivo" />
+    <MESSAGE value="reemplaza algunos nombres actuales por unos más apropiados" />
+    <option name="LAST_COMMIT_MESSAGE" value="reemplaza algunos nombres actuales por unos más apropiados" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

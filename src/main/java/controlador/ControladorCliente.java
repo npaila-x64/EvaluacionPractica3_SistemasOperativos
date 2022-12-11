@@ -23,6 +23,7 @@ public class ControladorCliente {
     private final ServidorHandler servidor;
     private static final String separadorArchivos = ";";
     private boolean refrescandoListaDeArchivos;
+    private final int puerto = 65304;
 
     public ControladorCliente() {
         archivos = new ArrayList<>();
@@ -122,7 +123,7 @@ public class ControladorCliente {
 
     public void conectarConServidorFueSolicitado() {
         try {
-            servidor.crearSocket(vista.getServidorHostname());
+            servidor.crearSocket(vista.getServidorHostname(), puerto);
             iniciarAutoRefrescadorDeLista();
             habilitarComponentesInteractivosDeConexion(false);
         } catch (IOException e) {

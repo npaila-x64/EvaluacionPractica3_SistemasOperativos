@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="agrega completa funcionalidad multihilo entre servidor y clientes">
+    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="agrega README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/ClientesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ClientesHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/handler/ServidorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ServidorHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev_nicolas_multihilo" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,7 +63,7 @@
       <recent name="gui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AppCliente">
+  <component name="RunManager">
     <configuration name="AppCliente" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lanzador.AppCliente" />
       <module name="EvaluacionPractica3_SistemasOperativos" />
@@ -109,8 +108,8 @@
         <item itemvalue="Application.AppServidor" />
         <item itemvalue="Application.AppCliente" />
         <item itemvalue="Application.Consola" />
-        <item itemvalue="Application.AppCliente" />
         <item itemvalue="Application.AppServidor" />
+        <item itemvalue="Application.AppCliente" />
       </list>
     </recent_temporary>
   </component>
@@ -193,7 +192,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670713116749</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="cambia formato de inicio de la consola">
+      <created>1670794419268</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670794419268</updated>
+    </task>
+    <task id="LOCAL-00012" summary="agrega README.md">
+      <created>1670794430542</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670794430542</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -218,7 +231,9 @@
     <MESSAGE value="agrega ícono de aplicación" />
     <MESSAGE value="agrega uso de única conexión por parte de cliente" />
     <MESSAGE value="agrega completa funcionalidad multihilo entre servidor y clientes" />
-    <option name="LAST_COMMIT_MESSAGE" value="agrega completa funcionalidad multihilo entre servidor y clientes" />
+    <MESSAGE value="cambia formato de inicio de la consola" />
+    <MESSAGE value="agrega README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="agrega README.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

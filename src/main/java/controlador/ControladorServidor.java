@@ -18,7 +18,7 @@ import java.util.Map;
 public class ControladorServidor {
 
     private Consola consola;
-    private final int puerto = 7287;
+    private final int puerto = 65304;
     private boolean escuchando = true;
     private List<File> listaDeArchivos;
     private Comando respuesta;

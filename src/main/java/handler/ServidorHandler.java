@@ -9,11 +9,10 @@ import java.net.Socket;
 public class ServidorHandler {
 
     private String hostname = "localhost";
-    private final int puerto = 7287;
     private Comando respuesta;
     private Socket socket;
 
-    public void crearSocket(String hostname) throws IOException {
+    public void crearSocket(String hostname, int puerto) throws IOException {
         socket = new Socket(hostname, puerto);
     }
 

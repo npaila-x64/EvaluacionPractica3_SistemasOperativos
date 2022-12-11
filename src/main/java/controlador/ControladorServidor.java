@@ -31,6 +31,7 @@ public class ControladorServidor {
 
     public void iniciar() {
         try (ServerSocket ss = new ServerSocket(puerto)) {
+            consola.mostraInicioDeServidor(puerto);
             while (escuchando) {
                 Socket cliente = ss.accept();
                 consola.mostrarClienteSeConecto(

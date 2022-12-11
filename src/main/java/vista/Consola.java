@@ -7,7 +7,7 @@ public class Consola {
 
     public Consola() {
         System.out.println(getTimeStamp()
-                .concat("Inicializando la consola del servidor. Esperando conexiones."));
+                .concat("Consola del servidor inicializada."));
     }
 
     public void mostrarSolicitud(String comando, String hostName) {
@@ -52,5 +52,12 @@ public class Consola {
         System.out.println(
                 getTimeStamp()
                         .concat(mensaje));
+    }
+
+    public void mostraInicioDeServidor(int puerto) {
+        System.out.println(getTimeStamp()
+                .concat("Servidor inicializado. Esperando conexiones en el puerto ")
+                .concat(String.valueOf(puerto))
+                .concat("."));
     }
 }

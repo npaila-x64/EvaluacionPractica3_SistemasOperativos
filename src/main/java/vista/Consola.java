@@ -25,7 +25,7 @@ public class Consola {
     }
 
     public void mostrarArchivoSeCreo(String name) {
-        mostrar("Se creo el archivo "
+        mostrar("Se creó el archivo "
                 .concat("'")
                 .concat(name)
                 .concat("'"));

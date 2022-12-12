@@ -23,6 +23,7 @@ public class ControladorServidor {
     private List<File> listaDeArchivos;
     private Comando respuesta;
     private static final String separadorArchivos = ";";
+    private boolean DEBUG = false;
 
     public ControladorServidor() {
         consola = new Consola();

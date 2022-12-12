@@ -129,7 +129,7 @@ public class ControladorCliente {
         } catch (IOException e) {
             mostrarErrorAUsuario("Ocurrió un error al intentar conectar con el servidor. " + e.getMessage());
         }
-     }
+    }
 
     private void iniciarAutoRefrescadorDeLista() {
         RefrescadorDeLista refrescador = new RefrescadorDeLista(this);

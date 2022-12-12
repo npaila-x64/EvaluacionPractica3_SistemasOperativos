@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="agrega README.md">
+    <list default="true" id="6a26de6d-6da5-4b62-b97c-e463e4daacb0" name="Changes" comment="agrega completa funcionalidad multihilo entre servidor y clientes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/archivos/archivo_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/archivos/archivo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/archivos/hola.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controlador/ControladorServidor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/handler/ServidorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ServidorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lanzador/AppCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lanzador/AppCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vista/Consola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vista/Consola.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,9 +110,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Consola" />
         <item itemvalue="Application.AppServidor" />
         <item itemvalue="Application.AppCliente" />
-        <item itemvalue="Application.Consola" />
         <item itemvalue="Application.AppServidor" />
         <item itemvalue="Application.AppCliente" />
       </list>

@@ -1,5 +1,6 @@
 package handler;
 
+import lanzador.AppCliente;
 import modelo.Comando;
 import modelo.ComandoEnum;
 
@@ -8,7 +9,6 @@ import java.net.Socket;
 
 public class ServidorHandler {
 
-    private String hostname = "localhost";
     private Comando respuesta;
     private Socket socket;
 
@@ -19,6 +19,7 @@ public class ServidorHandler {
     private void realizarSolicitud(Comando comando) throws IOException {
         enviarComando(socket, comando);
         String mensajeRecibido = recibirMensaje(socket);
+        mostrarMensajesEnModoDebug(comando, mensajeRecibido);
         if (mensajeRecibido != null) {
             respuesta = Comando.parsearSolicitud(mensajeRecibido);
         }
@@ -64,6 +65,14 @@ public class ServidorHandler {
     public void cerrarConexion() throws IOException {
         if (socket != null) {
             socket.close();
+        }
+    }
+
+    private void mostrarMensajesEnModoDebug(Comando comando, String mensajeRecibido) {
+        if (AppCliente.DEBUG) {
+            System.out.println();
+            System.out.println("Mensaje enviado: " + comando);
+            System.out.println("Mensaje recibido: " + mensajeRecibido);
         }
     }
 }
